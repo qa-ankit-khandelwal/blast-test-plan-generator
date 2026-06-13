@@ -1,0 +1,7 @@
+.env
+.tmp/
+app/node_modules/
+tools/__pycache__/
+*.pyc
+run.sh
+prompt.md
