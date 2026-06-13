@@ -244,7 +244,7 @@ export default function App() {
               <span className="brand-title">B.L.A.S.T</span>
               <span className="brand-pill">Open Source</span>
             </div>
-            <a className="github-link" href="https://github.com/ankitkhandelwal046/blast-test-plan-generator" target="_blank" rel="noopener noreferrer">
+            <a className="github-link" href="https://github.com/qa-ankit-khandelwal/blast-test-plan-generator" target="_blank" rel="noopener noreferrer">
               <GitHubIcon /> Star on GitHub
             </a>
           </div>
@@ -386,7 +386,7 @@ export default function App() {
         <span className="footer-dot">·</span>
         <span>Built with the B.L.A.S.T Framework</span>
         <span className="footer-dot">·</span>
-        <a href="https://github.com/ankitkhandelwal046/blast-test-plan-generator" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/qa-ankit-khandelwal/blast-test-plan-generator" target="_blank" rel="noopener noreferrer">
           Contribute on GitHub
         </a>
       </footer>

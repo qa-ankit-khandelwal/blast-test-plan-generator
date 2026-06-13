@@ -15,10 +15,11 @@
 
 ## What it does
 
-1. You enter a Jira issue ID (e.g. `SCRUM-6`)
-2. It fetches the issue fields — summary, description, acceptance criteria, story points, labels, linked issues
-3. It sends the data to GROQ's LLM (`llama-3.3-70b-versatile`)
-4. You get a structured 4-section test plan:
+1. You enter your **Jira credentials** in the UI (domain, email, API token) — stored only in your browser
+2. You enter a Jira issue ID (e.g. `SCRUM-6`)
+3. It fetches the issue fields — summary, description, acceptance criteria, story points, labels, linked issues
+4. It sends the data to GROQ's LLM (`llama-3.3-70b-versatile`)
+5. You get a structured 4-section test plan:
    - **Test Objective** — what is being verified
    - **Scope** — in scope vs out of scope
    - **Test Cases** — min 4 cases (happy path, edge case, negative, boundary)
@@ -50,7 +51,7 @@
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/ankitkhandelwal046/blast-test-plan-generator.git
+git clone https://github.com/qa-ankit-khandelwal/blast-test-plan-generator.git
 cd blast-test-plan-generator
 ```
 
@@ -60,21 +61,18 @@ cd blast-test-plan-generator
 cp .env.sample .env
 ```
 
-Edit `.env` and fill in your values:
+Edit `.env` — only one value needed server-side:
 
 ```env
-GROQ_KEY       = "gsk_your_groq_api_key_here"
-JIRA_API_TOKEN = "your_jira_api_token_here"
-JIRA_EMAIL     = "your_atlassian_email@example.com"
-JIRA_URL       = "https://your-domain.atlassian.net/browse/PROJECT-1"
+GROQ_KEY = "gsk_your_groq_api_key_here"
 ```
 
 | Variable | Where to get it |
 |---|---|
 | `GROQ_KEY` | [console.groq.com/keys](https://console.groq.com/keys) — free tier available |
-| `JIRA_API_TOKEN` | [id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens) |
-| `JIRA_EMAIL` | Your Atlassian account email |
-| `JIRA_URL` | Any Jira issue URL from your project |
+
+> **Jira credentials are entered by each user in the UI** — domain, email, and API token.  
+> They're saved in the browser's localStorage only and never sent to or stored on the server.
 
 ### 3. Install dependencies
 
@@ -187,13 +185,12 @@ npm install -g vercel
 vercel deploy --prod
 ```
 
-Set the four environment variables in the Vercel dashboard or via CLI:
+Set the single environment variable in Vercel:
 ```bash
 vercel env add GROQ_KEY production
-vercel env add JIRA_API_TOKEN production
-vercel env add JIRA_EMAIL production
-vercel env add JIRA_URL production
 ```
+
+Jira credentials are provided by each user at runtime — no server-side config needed for Jira.
 
 ---
 
